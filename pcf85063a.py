@@ -206,6 +206,9 @@ class PCF85063A:
     """Calibration offset to apply, from -64 to +63.  See the PCF85063A datasheet
     table 13 for values and figure 11 for the offset calibration calculation workflow."""
 
+    ram_byte = i2c_bits.RWBits(8,0x03,0)
+    """free to use single byte of RAM. The value is zero on POR"""
+
     def __init__(self, i2c_bus: I2C):
         self.i2c_device = I2CDevice(i2c_bus, 0x51)
 
